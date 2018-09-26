@@ -1,5 +1,6 @@
 package kr.ac.daelim.daelimenglishstudy;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
 
 import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     WebView webView;
     TextView errorText;
+    Button btn_connect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         errorText = (TextView) findViewById(R.id.net_error_view);
         webView = (WebView) findViewById(R.id.webview_main);
+        btn_connect = (Button) findViewById(R.id.btn_connect);
+
 
         WebSettings webSettings = webView.getSettings();
 
@@ -105,12 +110,23 @@ public class MainActivity extends AppCompatActivity {
 
                 webView.setVisibility(View.GONE);
                 errorText.setVisibility(View.VISIBLE);
+                btn_connect.setVisibility(View.VISIBLE);
             }
         });
 
         webView.loadUrl("http://61.84.24.188:8080/word/");
 
+        btn_connect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClassName("com.android.settings", "com.android.settings.wifi.WifiSettings");
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     BackPressCloseHandler backPressCloseHandler = new BackPressCloseHandler(this);
 

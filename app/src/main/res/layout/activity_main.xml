@@ -4,13 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <WebView
         android:id="@+id/webview_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fadingEdge="none" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fadingEdge="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/net_error_view"
@@ -18,8 +23,25 @@
         android:layout_height="match_parent"
         android:fadingEdge="none"
         android:gravity="center"
-        android:text="접속이 원할하지 않습니다."
+        android:text="접속이 원할하지 않습니다. \n와이파이 또는 인터넷 연결을 확인해주세요."
+        android:textSize="20sp"
         android:visibility="gone"
-        />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btn_connect"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="176dp"
+        android:text="연결 설정"
+        android:visibility="gone"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
